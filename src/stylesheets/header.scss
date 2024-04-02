@@ -1,0 +1,104 @@
+header {
+    background-color: $header-color;
+
+    nav {
+        padding-top: 8px;
+        margin: 0px 35px;
+
+        ul {
+            display: $flex;
+            list-style-type: none;
+            align-items: baseline;
+
+            li {
+                &:first-child {
+                    a {
+                        color: $dark-blue;
+
+                        &:hover {
+                            color: $black;
+                        }
+                    }
+                }
+
+                &:nth-child(2) {
+                    margin-left: auto;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: $black;
+                    font-size: 15px; 
+                }
+
+                @for $i from 1 through 5 {
+                    .option#{$i}{
+                        border-bottom: 1px solid;
+                        padding: 0px 11px 10px;
+                    }
+                }
+
+                .option1 {
+                    border-color: $dark-blue; 
+                    color: $dark-blue;
+                }
+
+                @for $i from 2 through 5 {
+                    .option#{$i}{
+                        border-color: $purple-blue;
+
+                        &:hover{
+                            border-color: $black;
+                        }
+                    }
+                }
+
+                .option5 {
+                    margin-right: 9px;
+                }
+
+                button {
+                    background-color: transparent;
+                    font-size: 15px;
+                    font-weight: bold;
+                    color: $dark-blue;
+                    border: 1px solid $dark-blue;
+                    border-radius: $general-radius;
+                    cursor: pointer;
+                    padding: 12px 11px 10px;
+
+                    &:hover {
+                        @each $side in $sides {
+                            @if $side == "bottom"{
+                                border-#{$side}: 1px solid $black;
+                            }
+                            @else{
+                                border-#{$side}: 3px solid $dark-blue;
+                            }
+                        }
+                        color: $black;
+                    }
+                }
+            }
+        }
+    }
+
+    .heroBanner {
+        @include display-content($flex, column, 30px);
+        color: $dark-blue;
+        padding: 115px 0px;
+
+        &>div {
+            text-align: center;
+        }
+
+        .title {
+            @include title;
+        }
+
+        .subtitle {
+            font-size: 19px;
+            line-height: 32px;
+        }
+    }
+}

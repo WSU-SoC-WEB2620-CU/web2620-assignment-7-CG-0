@@ -1,0 +1,227 @@
+.message {
+    .messageText {
+        text-align: center;
+        font-size: 15px;
+        margin: 20px 0px;
+
+        span {
+            background-color: $span-color;
+            font-size: 13px;
+            padding: 5px 8px 4px;
+            border-radius: $general-radius;
+        }
+    }
+}
+
+.mainContent {
+    background-color: $main-color;
+    display: $grid;
+    grid-template-columns: repeat(34, 1fr);
+    padding: 100px 0px;
+
+    @for $i from 1 through 3 {
+        .card#{$i}{
+            @include display-content($flex, column, 60px);
+            background-color: $white; 
+            border-radius: $general-radius;
+            align-items: center;
+            padding: 30px 0px;
+
+            &:hover {
+                box-shadow: 1px 9px 10px $hover-color;
+            }
+    
+            .logo {
+                color: $purple-blue;
+                font-size: 90px;
+            }
+
+            .cardContent {
+                @include display-content($flex, column, 12px);
+                margin-left: 45px;
+                margin-right: 10px;
+                padding-right: 30px;
+    
+                .cardTitle {
+                    font-weight: bold;
+                }
+    
+                .cardText,.link {
+                    font-size: 14px;
+                }
+    
+                .link{
+                    a {
+                        text-decoration: none;
+                        color: $purple-blue;
+                    }
+                }
+            }
+        }
+    }
+    
+    .card1 {
+        grid-column: 2 / 11;
+        margin-bottom: 15px;
+    }
+    
+    .card2 {
+        grid-column: 13 / 22;
+    }
+
+    .card3 {
+        grid-column: 24 / 33;
+    }
+
+    .mainMessage{
+        grid-column: 1 / span 34;
+        padding: 115px 0px;
+        @include display-content($flex, column, 30px);
+
+        &>div {
+            text-align: center;
+            color: $purple-blue;
+        }
+
+        .mainTitle {
+            @include title;
+        }
+
+        .mainSubtitle{
+            font-size: 19px;
+        }
+    }
+
+    .row1 {
+        grid-column: 2 / 12;
+        @include footer-flexbox($flex, space-between);
+        padding-bottom: 20px;
+
+        @each $position in $positions {
+            .#{$position}Card {
+                background-color: $white;
+                border-radius: $general-radius;
+                line-height: 150%;
+                padding: 23px 25px;
+
+                &:hover{
+                    box-shadow: 1px 9px 10px $hover-color;
+                }
+
+                .title {
+                    @include title;
+                }
+    
+                .subtitle {
+                    font-size: 19px;
+                }
+            }
+        }
+    }
+
+    @for $i from 2 through 10 {
+        .row#{$i}{
+            grid-column: 2 / 33;
+            border-radius: $general-radius;
+            background-color: $white;
+        }
+    }
+    
+    @for $i from 2 through 10 {
+        .row#{$i}{
+            @if $i == 4 {
+                padding: 25px 23px 18px;
+                margin-top: 20px;
+
+                .head1,
+                .head2 {
+                    line-height: 23px;
+
+                    .title {
+                        @include title;
+                    }
+
+                    .subtitle {
+                        font-size: 19px;
+                    }
+                }
+
+                .head2 {
+                    padding-top: 55px;
+                    padding-bottom: 17px;
+                }
+
+                .image {
+                    img {
+                        width:100%;
+                    }
+                }
+            }
+            @else {
+                line-height: 23px;
+                padding: 25px 0px 18px 23px;
+
+                .title {
+                    @include title;
+                }
+
+                .subtitle {
+                    font-size: 19px;
+                }
+            }
+        }
+    }
+
+    @each $number-missing in $two-numbers-missing {
+        .row#{$number-missing}{
+            &:hover{
+                box-shadow: 1px 9px 10px $hover-color;
+            }
+        }
+    }
+
+    /* My Function and its result*/
+    @function double($value) {
+        @return $value * 2;
+    }
+
+    @each $missing-number in $missing-numbers {
+        @if $missing-number == 3 {
+            .row#{double($missing-number)}{
+                .rowText {
+                    padding: 18px 0px 0px 0px;
+                    @include display-content($flex, column, 18px);
+                }
+            }
+        }
+        @else {
+            .row#{$missing-number}{
+                .rowText {
+                    padding: 18px 0px 0px 0px;
+                }
+            }
+        }
+    }
+
+    .row2 {
+        margin-bottom: 10px;
+    }
+
+    @for $i from 3 through 4 {
+        .row#{$i}{
+            margin-left: -10px;
+            margin-right: -10px;
+        }
+    }
+
+    @for $i from 5 through 10 {
+        .row#{$i}{
+            @if $i == 5 {
+                margin-top: 10px;
+            } 
+            @else {
+                margin-top: 15px;
+            }
+        }
+    }
+}

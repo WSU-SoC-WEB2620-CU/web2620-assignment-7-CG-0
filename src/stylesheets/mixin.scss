@@ -1,0 +1,24 @@
+// General
+@mixin title {
+    font-size: 30px;
+    font-weight: 900;
+}
+
+// Main Content
+@mixin display-content($display, $direction, $gap){
+    display: $display;
+    flex-direction: $direction;
+    row-gap: $gap;
+}
+
+// Footer
+@mixin footer-flexbox($display, $justify) {
+    display: $display;
+    justify-content: $justify;
+}
+
+@mixin footer-span($color, $background-color, $border-radius) {
+    color: $color; 
+    background-color: $background-color;
+    border-radius: $border-radius;
+}

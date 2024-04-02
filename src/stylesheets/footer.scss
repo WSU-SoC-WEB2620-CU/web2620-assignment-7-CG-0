@@ -1,0 +1,76 @@
+footer {
+    display: $grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 20px 1fr 20px 30px 40px;
+    row-gap: 20px;
+
+    .lists {
+        grid-area: 2 / 2 / span 1 / span 3;
+
+        .listContent {
+            @include footer-flexbox($flex, space-between);
+
+            $num: 1;
+            @while $num <= 3 {
+                .list#{$num}{
+                    font-size: 15px;
+
+                    p {
+                        font-weight: bold;
+                        margin-left: 21px;
+                    }
+
+                    ul {
+                        list-style-type: none;
+
+                        li,
+                        a {
+                            color: $dark-blue;
+                        }
+
+                        li {
+                            margin-top: 4px;
+
+                            a {
+                                text-decoration: none;
+                                margin-left: 7px;
+                            }
+                        }
+                    }
+                }
+                $num: $num + 1;
+            }
+        }
+    }
+
+    .footerLogo {
+        grid-area: 3 / 3 / span 1 / span 1;
+
+        a {
+            @include footer-flexbox($flex, center);
+            color: $black;
+        }
+    }
+
+    .footerText {
+        grid-area: 4 / 3 / span 1 / span 1;
+
+        a {
+            @include footer-flexbox($flex, center);
+            font-size: 11px;
+            text-decoration: none;
+
+            span { 
+                padding: 6px 8px 4px;
+
+                &:first-child {
+                    @include footer-span($white, $black, $first-footer-radius);
+                }
+
+                &:last-child {
+                    @include footer-span($black, $header-color, $second-footer-radius);
+                }
+            }
+        }
+    }
+}
